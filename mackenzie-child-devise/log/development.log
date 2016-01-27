@@ -1818,3 +1818,1764 @@ Processing by ArticlesController#index as HTML
   [1m[36mArticle Load (0.3ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
   Rendered articles/index.html.erb within layouts/application (5.3ms)
 Completed 200 OK in 41ms (Views: 39.9ms | ActiveRecord: 0.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20160127123457)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160127123457"]]
+  [1m[36m (161.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.4ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_article_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_article_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 10:36:40 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 548ms (Views: 515.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-27 10:37:38 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (316.7ms)
+Completed 200 OK in 370ms (Views: 349.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 10:38:06 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (8.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (56.8ms)
+Completed 200 OK in 106ms (Views: 82.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-01-27 10:38:22 -0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bzyvemSLeLh+0MddArmdMTft1dU4Pm9HGtSflH+14kUvoe/WcRjbczJbhc7/PZxN5TQcQ8Ys4Nyk9BtZ/jjc9w==", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  Rendered devise/shared/_links.html.erb (2.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 53ms (Views: 27.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-01-27 10:38:51 -0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ah6qsze/WLZmQTDF9dFG1Y3yO79PmEFakGJPze7VTPMqg+ofIiz7fSrKclYIVUepXyvyKbGKzsEuQssAb1hyQQ==", "user"=>{"email"=>"biff@biff", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'biff@biff' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 321ms (Views: 32.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-01-27 10:39:12 -0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nrUuGc/b1Xwir4m3+6l0VWPYEbZcZ0j1mxaqtzUo1dPeKG612kh2t24kyyQGLXUpsQHYIKJ1x24lNi56tKXrYQ==", "user"=>{"email"=>"biff@biff.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'biff@biff.com' LIMIT 1
+  [1m[36mSQL (9.6ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "biff@biff.com"], ["encrypted_password", "$2a$10$psBD12vQbXKQ4y0PE.ya8.xlN9zEd82.CrGSzHdGPtruCtwK.LHMe"], ["created_at", "2016-01-27 12:39:12.701388"], ["updated_at", "2016-01-27 12:39:12.701388"]]
+  [1m[35m (131.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-01-27 12:39:12.845601"], ["current_sign_in_at", "2016-01-27 12:39:12.845601"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2016-01-27 12:39:12.846660"], ["id", 1]]
+  [1m[36m (122.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 411ms (ActiveRecord: 264.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 10:39:13 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToPosts (20160127124502)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToPosts (20160127124502)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToPosts (20160127124502)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToArticles (20160127124807)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "articles" ADD "user_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160127124807"]]
+  [1m[36m (160.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_article_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_article_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 10:49:55 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.2ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 227ms (Views: 209.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 10:49:58 -0200
+Processing by ArticlesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.6ms)
+
+NoMethodError (undefined method `article' for #<User:0x007f24f9ec69e8>):
+  app/controllers/articles_controller.rb:11:in `new'
+
+
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.8ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.4ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.0ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (2.0ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (30.6ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (67.0ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 10:49:59 -0200
+Processing by ArticlesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.1ms)
+
+NoMethodError (undefined method `article' for #<User:0x007f24fa180fa8>):
+  app/controllers/articles_controller.rb:11:in `new'
+
+
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.9ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (27.5ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 10:50:03 -0200
+Processing by ArticlesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms)
+
+NoMethodError (undefined method `article' for #<User:0x007f24fa588d08>):
+  app/controllers/articles_controller.rb:11:in `new'
+
+
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.9ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (23.4ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.5ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (28.6ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.5ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 50ms (Views: 44.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 10:50:49 -0200
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 10:50:51 -0200
+Processing by ArticlesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.7ms)
+
+NoMethodError (undefined method `article' for #<User:0x007f24f9afcbf0>):
+  app/controllers/articles_controller.rb:11:in `new'
+
+
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.0ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (13.4ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (26.7ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 10:50:51 -0200
+Processing by ArticlesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms)
+
+NoMethodError (undefined method `article' for #<User:0x007f24fa2a2378>):
+  app/controllers/articles_controller.rb:11:in `new'
+
+
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.5ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (12.6ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (27.1ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 10:51:44 -0200
+Processing by ArticlesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.9ms)
+
+NoMethodError (undefined method `post' for #<User:0x007f24fa273168>):
+  app/controllers/articles_controller.rb:11:in `new'
+
+
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.1ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (27.8ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.5ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 37ms (Views: 31.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 10:52:38 -0200
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 10:52:40 -0200
+Processing by ArticlesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered articles/_form.html.erb (37.6ms)
+  Rendered articles/new.html.erb within layouts/application (39.8ms)
+Completed 200 OK in 145ms (Views: 80.5ms | ActiveRecord: 0.8ms)
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT  "articles".* FROM "articles"  ORDER BY "articles"."id" ASC LIMIT 1[0m
+
+
+Started POST "/articles" for 127.0.0.1 at 2016-01-27 10:55:17 -0200
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jgnFgOB/kFeYjlabA7xaH7nnzAAztyPhKMak0Z77TrHOlIUs9ewznNQFFAj+OFtjaz4Fls2lrHqW5iAcH3ZwAw==", "article"=>{"title"=>"THIS IS THE TITLE OF A POST WITH A USER", "text"=>"SO WE SHOULD HAVE A USER_ID FOR IT."}, "commit"=>"Create Article"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "articles" ("title", "text", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "THIS IS THE TITLE OF A POST WITH A USER"], ["text", "SO WE SHOULD HAVE A USER_ID FOR IT."], ["user_id", 1], ["created_at", "2016-01-27 12:55:17.649907"], ["updated_at", "2016-01-27 12:55:17.649907"]]
+  [1m[36m (250.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/articles/8
+Completed 302 Found in 263ms (ActiveRecord: 251.5ms)
+
+
+Started GET "/articles/8" for 127.0.0.1 at 2016-01-27 10:55:17 -0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 8]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (12.8ms)
+  Rendered articles/show.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 84ms (Views: 67.2ms | ActiveRecord: 0.7ms)
+  [1m[35mArticle Load (0.6ms)[0m  SELECT  "articles".* FROM "articles"  ORDER BY "articles"."id" DESC LIMIT 1
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:04:24 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:04:25 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.4ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (6.1ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (undefined method `email' for nil:NilClass):
+    13:     <tr>
+    14:       <td><%= article.title %></td>
+    15:       <td><%= article.text %></td>
+    16:       <td><%= article.user.email %></td>
+    17:       <td><%= link_to 'Show', article_path(article) %></td>
+    18:       <td><%= link_to 'Edit', edit_article_path(article) %></td>
+    19:       <td><%= link_to 'Destroy', article_path(article),
+  app/views/articles/index.html.erb:16:in `block in _app_views_articles_index_html_erb__3170148423074366483_69898398367700'
+  app/views/articles/index.html.erb:12:in `_app_views_articles_index_html_erb__3170148423074366483_69898398367700'
+
+
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.5ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.9ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (13.6ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (26.8ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:04:25 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `email' for nil:NilClass):
+    13:     <tr>
+    14:       <td><%= article.title %></td>
+    15:       <td><%= article.text %></td>
+    16:       <td><%= article.user.email %></td>
+    17:       <td><%= link_to 'Show', article_path(article) %></td>
+    18:       <td><%= link_to 'Edit', edit_article_path(article) %></td>
+    19:       <td><%= link_to 'Destroy', article_path(article),
+  app/views/articles/index.html.erb:16:in `block in _app_views_articles_index_html_erb__3170148423074366483_69898386746600'
+  app/views/articles/index.html.erb:12:in `_app_views_articles_index_html_erb__3170148423074366483_69898386746600'
+
+
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.5ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (13.7ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (29.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mArticle Load (0.6ms)[0m  SELECT  "articles".* FROM "articles"  ORDER BY "articles"."id" DESC LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArticle Load (0.6ms)[0m  SELECT "articles".* FROM "articles"
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:07:38 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.4ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 44ms (Views: 42.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:07:39 -0200
+
+
+Started DELETE "/articles/1" for 127.0.0.1 at 2016-01-27 12:07:45 -0200
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/Oyuwirl7OGTZjQfJsqCB4vrzhEEsuVE8jR8h/S0n5q8ce5uP3ZPKt/tdozbToN7WTIHh/qgat9MFPhKdTmhKA==", "id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  [1m[35mSQL (21.1ms)[0m  DELETE FROM "comments" WHERE "comments"."id" = ?  [["id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "comments" WHERE "comments"."id" = ?[0m  [["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "articles" WHERE "articles"."id" = ?  [["id", 1]]
+  [1m[36m (155.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 184ms (ActiveRecord: 176.8ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:07:45 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.2ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 23ms (Views: 22.7ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/articles/2" for 127.0.0.1 at 2016-01-27 12:07:47 -0200
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Vy3Vrss3JWJPV6c/z3KSbfpJHzbFcv+eGHwYly5Tv3AXsJUC3qSGqQPc5awy9pMRKJDWoDtgcAWmXJxar96Bwg==", "id"=>"2"}
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 2]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "comments" WHERE "comments"."id" = ?  [["id", 4]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "articles" WHERE "articles"."id" = ?[0m  [["id", 2]]
+  [1m[35m (175.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 183ms (ActiveRecord: 176.3ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:07:47 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/articles/3" for 127.0.0.1 at 2016-01-27 12:07:49 -0200
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"l5fJ4Mg9k9Kx4HtZttHYHaA3gE4hAnW7PIEDhxjYnFLXColM3a4wGf1rOcpLVdlhcu5J2N8Q+iCCoYdKmVWi4A==", "id"=>"3"}
+  [1m[35mArticle Load (0.5ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 3]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "articles" WHERE "articles"."id" = ?[0m  [["id", 3]]
+  [1m[35m (351.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 359ms (ActiveRecord: 352.5ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:07:49 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 31ms (Views: 29.9ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/articles/4" for 127.0.0.1 at 2016-01-27 12:07:51 -0200
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ftBCoJnp8Q2SnKbE3YtZ4ifJ96pX0lERXOkdriLxfCs+TQIMjHpSxt4X5FcgD1ie9RA+PKnA3oriyZljo3xCmQ==", "id"=>"4"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 4]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "articles" WHERE "articles"."id" = ?[0m  [["id", 4]]
+  [1m[35m (185.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 193ms (ActiveRecord: 186.4ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:07:51 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 21ms (Views: 20.1ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/articles/5" for 127.0.0.1 at 2016-01-27 12:07:59 -0200
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"nRGFeSkQAIGWBWtYCV9H3f4b6rdAn6V91KCmeJ6lNxTdjMXVPIOjStqOKcv020ahLMIjIb6NKuZqgCK1HygJpg==", "id"=>"5"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 5]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "articles" WHERE "articles"."id" = ?[0m  [["id", 5]]
+  [1m[35m (134.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 139ms (ActiveRecord: 135.2ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:07:59 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 25ms (Views: 23.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.6ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered articles/index.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 50ms (Views: 48.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:08:16 -0200
+
+
+Started GET "/articles/8" for 127.0.0.1 at 2016-01-27 12:08:22 -0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 8]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (4.9ms)
+  Rendered articles/show.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 43ms (Views: 41.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 30ms (Views: 29.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:10 -0200
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-27 12:09:17 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 44ms (Views: 38.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-01-27 12:09:41 -0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LqsFYSjV5PcxJZIJ5j9SNmq22H4jsbkfyxQRDuBDwVqmFscaHh/6lQ6luumBnoPXy0Dfnj2sbzYIWhE2EaIlDA==", "user"=>{"email"=>"john@john.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'john@john.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "john@john.com"], ["encrypted_password", "$2a$10$XED.2yNgihA5VJGq.Z.dX./KeU9Ph1ffijJ8qOu4B7JCIaJ6SZteC"], ["created_at", "2016-01-27 14:09:41.606455"], ["updated_at", "2016-01-27 14:09:41.606455"]]
+  [1m[36m (170.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-01-27 14:09:41.779872"], ["current_sign_in_at", "2016-01-27 14:09:41.779872"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2016-01-27 14:09:41.780820"], ["id", 2]]
+  [1m[35m (161.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 505ms (ActiveRecord: 333.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:09:41 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 32ms (Views: 31.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_i" for 127.0.0.1 at 2016-01-27 12:09:51 -0200
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_i"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/carlos/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/carlos/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/carlos/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.1ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.9ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (62.9ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.2ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.5ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/carlos/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (34.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (10.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (23.3ms)
+Completed 200 OK in 55ms (Views: 51.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:09:54 -0200
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:10:09 -0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BZDXrZfqDYWjd1WuN8mCGJ+Tw9/pqWdqN0O9645lHuEOJ5fboULVPq31h9yHMDOemphb0Vpvud9W1TC2AssUxg==", "user"=>{"email"=>"john@john.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "john@john.com"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2016-01-27 14:10:10.059303"], ["sign_in_count", 2], ["updated_at", "2016-01-27 14:10:10.060202"], ["id", 2]]
+  [1m[35m (153.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 322ms (ActiveRecord: 153.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:10:10 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 24ms (Views: 23.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:10:12 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered articles/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 29ms (Views: 27.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles/8" for 127.0.0.1 at 2016-01-27 12:10:14 -0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 8]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (4.6ms)
+  Rendered articles/show.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 47ms (Views: 44.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles/8/edit" for 127.0.0.1 at 2016-01-27 12:10:16 -0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 8]]
+  Rendered articles/_form.html.erb (3.3ms)
+  Rendered articles/edit.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 57ms (Views: 55.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 12:10:19 -0200
+Processing by ArticlesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  Rendered articles/_form.html.erb (2.8ms)
+  Rendered articles/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 38ms (Views: 33.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2016-01-27 12:10:36 -0200
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ggP5F3o2TWyd8wr+mKs6mRwzFAJQeM2xG4Wy5/V5rw/yoZ9qFm6636qKebESl6qq2YmLLx91pvpVW5fqsvFgzw==", "article"=>{"title"=>"I am the title", "text"=>"I am the text"}, "commit"=>"Create Article"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "articles" ("title", "text", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "I am the title"], ["text", "I am the text"], ["user_id", 2], ["created_at", "2016-01-27 14:10:36.227611"], ["updated_at", "2016-01-27 14:10:36.227611"]]
+  [1m[35m (151.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles/9
+Completed 302 Found in 164ms (ActiveRecord: 151.7ms)
+
+
+Started GET "/articles/9" for 127.0.0.1 at 2016-01-27 12:10:36 -0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 9]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (2.2ms)
+  Rendered articles/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 25ms (Views: 24.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:10:38 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered articles/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 12:10:41 -0200
+Processing by ArticlesController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  Rendered articles/_form.html.erb (3.8ms)
+  Rendered articles/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 62ms (Views: 57.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2016-01-27 12:11:05 -0200
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YV+1953WcJ6ysJblJMKcIonsnxLI6tzJ1peM4nfNfksR/dOK8Y6HLYXJ5aqu/gwRTFYAP4fnt4KYSanvMEWxiw==", "article"=>{"title"=>"To be or not to be", "text"=>"That is the question. Or is it?"}, "commit"=>"Create Article"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "articles" ("title", "text", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "To be or not to be"], ["text", "That is the question. Or is it?"], ["user_id", 2], ["created_at", "2016-01-27 14:11:05.564820"], ["updated_at", "2016-01-27 14:11:05.564820"]]
+  [1m[35m (158.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles/10
+Completed 302 Found in 169ms (ActiveRecord: 159.3ms)
+
+
+Started GET "/articles/10" for 127.0.0.1 at 2016-01-27 12:11:05 -0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 10]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (2.8ms)
+  Rendered articles/show.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 31ms (Views: 29.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:11:10 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered articles/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 43ms (Views: 41.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 33ms (Views: 32.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:11:16 -0200
+
+
+Started POST "/users" for 127.0.0.1 at 2016-01-27 12:11:33 -0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qMwHphITXoW3XADqOB6zv1F2sqWhvZ6tCAqOlWV+zcoBLDS3eHsYKglwTjXj7OpLsuEU8wzgea++3+oI9XxlnA==", "user"=>{"email"=>"mary@mary.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'mary@mary.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "mary@mary.com"], ["encrypted_password", "$2a$10$Rpd1rpcga0UspmczBpxJsucw04Y2pL8TYkzj5EmnSRghuyprWiQ1e"], ["created_at", "2016-01-27 14:11:33.749887"], ["updated_at", "2016-01-27 14:11:33.749887"]]
+  [1m[35m (142.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-01-27 14:11:33.894556"], ["current_sign_in_at", "2016-01-27 14:11:33.894556"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2016-01-27 14:11:33.895430"], ["id", 3]]
+  [1m[36m (153.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 406ms (ActiveRecord: 296.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:11:34 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 21ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:11:35 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.3ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered articles/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 37ms (Views: 35.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 12:11:37 -0200
+Processing by ArticlesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 3]]
+  Rendered articles/_form.html.erb (3.6ms)
+  Rendered articles/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 45ms (Views: 40.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2016-01-27 12:13:10 -0200
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cMWgNVcsNTRMlgSnXcTSK0h/grkC0YRWrMJSC+2KTqrZJZMkPURzm/K6SniGNovfq+gk76+MY1QaFzaWfYjm/A==", "article"=>{"title"=>"Hadouken", "text"=>"Hadouken, literally \"wave motion fist\" is a special attack used by Ryu, Ken, and other Street Fighter characters."}, "commit"=>"Create Article"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "articles" ("title", "text", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Hadouken"], ["text", "Hadouken, literally \"wave motion fist\" is a special attack used by Ryu, Ken, and other Street Fighter characters."], ["user_id", 3], ["created_at", "2016-01-27 14:13:10.800293"], ["updated_at", "2016-01-27 14:13:10.800293"]]
+  [1m[35m (144.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles/11
+Completed 302 Found in 151ms (ActiveRecord: 144.6ms)
+
+
+Started GET "/articles/11" for 127.0.0.1 at 2016-01-27 12:13:10 -0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 11]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (1.9ms)
+  Rendered articles/show.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:13:22 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 41ms (Views: 39.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 12:16:26 -0200
+Processing by ArticlesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 3]]
+  Rendered articles/_form.html.erb (2.2ms)
+  Rendered articles/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 31ms (Views: 27.2ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2016-01-27 12:16:54 -0200
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"q6fjKpLRdjHCvGDOq71dRBf5Gqv22UcON8xRH8bU/tECR9A7+LkwnnyQLhFwTwSw9G68/VuEoAyBGTWCVtZWhw==", "article"=>{"title"=>"Tatsumaki Senpukyaku", "text"=>"The Tatsumaki Senpukyaku, also known as Hurricane Kick, is a special move that is usable by Ryu and Ken in Street Fighter."}, "commit"=>"Create Article"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "articles" ("title", "text", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Tatsumaki Senpukyaku"], ["text", "The Tatsumaki Senpukyaku, also known as Hurricane Kick, is a special move that is usable by Ryu and Ken in Street Fighter."], ["user_id", 3], ["created_at", "2016-01-27 14:16:54.308933"], ["updated_at", "2016-01-27 14:16:54.308933"]]
+  [1m[35m (124.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles/12
+Completed 302 Found in 135ms (ActiveRecord: 125.9ms)
+
+
+Started GET "/articles/12" for 127.0.0.1 at 2016-01-27 12:16:54 -0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 12]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (2.2ms)
+  Rendered articles/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:16:56 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 45ms (Views: 42.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:17:07 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 43ms (Views: 41.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:17:08 -0200
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 89ms (Views: 85.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:19:06 -0200
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-27 12:19:07 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:19:07 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:19:09 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.3ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 38ms (Views: 36.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.3ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 47ms (Views: 45.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:23 -0200
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:21:26 -0200
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:21:26 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 27ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 32ms (Views: 31.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:21:46 -0200
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:21:49 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 38ms (Views: 36.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-27 12:21:51 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 51ms (Views: 49.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:21:52 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 52ms (Views: 50.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-27 12:21:53 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 48ms (Views: 46.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:21:53 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 53ms (Views: 50.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-27 12:21:53 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 72ms (Views: 69.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:21:54 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 53ms (Views: 51.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-27 12:21:54 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 50ms (Views: 48.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:21:58 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 45ms (Views: 43.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:22:00 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 66ms (Views: 64.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:22:01 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 65ms (Views: 62.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-27 12:22:02 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 53ms (Views: 51.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:22:04 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 65ms (Views: 61.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-01-27 12:22:05 -0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 82ms (Views: 80.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:22:06 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 52ms (Views: 49.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2016-01-27 12:22:07 -0200
+Processing by Devise::PasswordsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.3ms)
+  Rendered devise/passwords/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 47ms (Views: 45.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 27ms (Views: 26.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:23:21 -0200
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:23:26 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 33ms (Views: 31.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles/8/edit" for 127.0.0.1 at 2016-01-27 12:23:31 -0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 8]]
+  Rendered articles/_form.html.erb (1.9ms)
+  Rendered articles/edit.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 24ms (Views: 22.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:23:33 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.3ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 41ms (Views: 39.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 23ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:25:11 -0200
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:25:14 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.7ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (28.9ms)
+Completed 200 OK in 56ms (Views: 49.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/articles/8" for 127.0.0.1 at 2016-01-27 12:25:17 -0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mArticle Load (0.3ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 8]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (12.6ms)
+  Rendered articles/show.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 52ms (Views: 48.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/articles/8/edit" for 127.0.0.1 at 2016-01-27 12:25:22 -0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"8"}
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:25:22 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 47ms (Views: 44.9ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/articles/8" for 127.0.0.1 at 2016-01-27 12:25:26 -0200
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"FXue12KM7Y//pV8yPIcMAdclrVhkEe7/QbDQaivPUsUbAF+xwitVpStCCxyRnP5tp8WzOrxah9R8oT64EiqVXw==", "id"=>"8"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:25:26 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (7.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 56ms (Views: 54.7ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/articles/8" for 127.0.0.1 at 2016-01-27 12:25:33 -0200
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"qkW/keGWHDr/XYs+q5GpbjwWsLV7uvW6IV/j4ndyMkCkPn73QTGkECu63xAGilsCTPau16PxnJEcTg0wTpf12g==", "id"=>"8"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:25:33 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 45ms (Views: 42.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 12:25:38 -0200
+Processing by ArticlesController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:25:38 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 38ms (Views: 37.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-27 12:28:31 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 16ms (Views: 15.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:28:34 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.3ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 34ms (Views: 32.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:28:41 -0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 51ms (Views: 49.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-27 12:28:54 -0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZiICBPeEuZ15Ar9f1DCWvrm2wJVhWdD3leQYxCCF4j5oWcNiVyMBt63l63F5K2TSyVbe97kSudyo9fYWGWAlpA==", "user"=>{"email"=>"biff@biff.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "biff@biff.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["current_sign_in_at", "2016-01-27 14:28:54.650789"], ["sign_in_count", 2], ["updated_at", "2016-01-27 14:28:54.652433"], ["id", 1]]
+  [1m[36m (159.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/articles/new
+Completed 302 Found in 306ms (ActiveRecord: 160.8ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2016-01-27 12:28:54 -0200
+Processing by ArticlesController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered articles/_form.html.erb (2.2ms)
+  Rendered articles/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 29ms (Views: 23.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:29:01 -0200
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (19.6ms)
+Completed 200 OK in 67ms (Views: 63.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:30:15 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.3ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 37ms (Views: 35.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-27 12:30:16 -0200
+
+
+Started GET "/articles/8/edit" for 127.0.0.1 at 2016-01-27 12:30:21 -0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mArticle Load (0.1ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 8]]
+  Rendered articles/_form.html.erb (3.3ms)
+  Rendered articles/edit.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 41ms (Views: 37.3ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/articles/8" for 127.0.0.1 at 2016-01-27 12:30:52 -0200
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ojl0TpJxHBXAGRnUdNTB+Rxy+CD4tYs3QgJf1VuIDtt6pDTih+K/3oySW0eJUMCFzqsxtganBKz8ItsY2gUwaQ==", "article"=>{"title"=>"My Article is the first article", "text"=>"My text is the first text."}, "commit"=>"Update Article", "id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mArticle Load (0.1ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "articles" SET "title" = ?, "text" = ?, "updated_at" = ? WHERE "articles"."id" = ?  [["title", "My Article is the first article"], ["text", "My text is the first text."], ["updated_at", "2016-01-27 14:30:52.773164"], ["id", 8]]
+  [1m[36m (239.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/articles/8
+Completed 302 Found in 247ms (ActiveRecord: 240.4ms)
+
+
+Started GET "/articles/8" for 127.0.0.1 at 2016-01-27 12:30:53 -0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mArticle Load (0.1ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 8]]
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (2.9ms)
+  Rendered articles/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 29ms (Views: 27.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2016-01-27 12:30:55 -0200
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.4ms)[0m  SELECT "articles".* FROM "articles"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered articles/index.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 47ms (Views: 45.2ms | ActiveRecord: 1.1ms)
