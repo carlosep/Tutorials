@@ -31,6 +31,13 @@ body {
     text-align: center;
     width: 34px;
   }
+
+  .winner{
+    background: rgb(1, 253, 34);
+  }
+  .loser{
+    background: rgb(253, 1, 1);
+  }
   
   .square:focus {
     outline: none;

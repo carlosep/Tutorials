@@ -4,16 +4,21 @@ import './index.css';
 
 function Square(props) {
   return (
-    <button className="square" onClick={props.onClick}>
+    <button className={"square" + ' ' + props.winner} onClick={props.onClick}>
       {props.value}
     </button>
   );
 }
-  
+
 class Board extends React.Component {
   renderSquare(i) {
+    let winner = ''
+    if (this.props.winnerSquares){
+      winner = this.props.winnerSquares.includes(i) ? 'winner' : 'loser '
+    }
     return <Square value={this.props.squares[i]}
-                   onClick={() => this.props.onClick(i)}/>
+                   onClick={() => this.props.onClick(i)}
+                   winner={winner}/>
   }
 
   render() {
@@ -75,9 +80,8 @@ class Game extends React.Component {
 
   render() {
     const history = this.state.history;
-    console.log(this.state.stepNumber)
     const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
+    const winner = calculateWinner(current.squares) || [];
 
     const moves = history.map((step, move) => {
       const desc = move ? 'Go to move #' + move : 'Go to game start';
@@ -89,8 +93,8 @@ class Game extends React.Component {
     });
 
     let status;
-    if (winner) {
-      status = 'Winner: ' + winner;
+    if (winner[1]) {
+      status = 'Winner: ' + winner[1];
     } else if (this.state.stepNumber == 9){
       status = 'It\'s a draw...';
     } else {
@@ -102,6 +106,7 @@ class Game extends React.Component {
           <Board
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
+            winnerSquares={winner[0]}
           />
         </div>
         <div className="game-info">
@@ -134,7 +139,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i]; // multipla declaração: a == 0, b == 1, c == 2
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return [lines[i], squares[a]];
     }
   }
   return null;
