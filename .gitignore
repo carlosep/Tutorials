@@ -18,3 +18,6 @@
 
 # Ignore all files or directories starting with a hash (#)
 \#*
+
+
+/react-tutorial/node_modules/.cache
